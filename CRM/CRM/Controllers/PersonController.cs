@@ -25,6 +25,13 @@ namespace CRM.Controllers
             model.People = _repository.GetPersonList(model.LastName);
             return View(model);
         }
+        public ActionResult _List(string LastName)
+        {
+            if (LastName == null) LastName = string.Empty;
+
+            var model = _repository.GetPersonList(LastName);
+            return PartialView(model);
+        }
         // GET: Person/Details/5
         public ActionResult Details(int id)
         {
@@ -54,6 +61,7 @@ namespace CRM.Controllers
                     _repository.SavePerson(p);
                     return RedirectToAction(nameof(Index));
                 }
+                ModelState.AddModelError("A", "ala ma kota");
                 return View(p);
             }
             catch

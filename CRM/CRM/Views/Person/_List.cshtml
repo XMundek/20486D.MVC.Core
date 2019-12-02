@@ -1,0 +1,57 @@
+﻿@model CRM.Model.Person[]
+@{
+    ViewData["Title"] = "List";
+}
+
+@if (Model?.Length > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => Model[0].LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => Model[0].FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => Model[0].BirthDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => Model[0].Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => Model[0].Id)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BirthDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
